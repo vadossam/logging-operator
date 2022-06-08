@@ -61,6 +61,8 @@ type LoggingSpec struct {
 	GlobalFilters []Filter `json:"globalFilters,omitempty"`
 	// Limit namespaces to watch Flow and Output custom resources.
 	WatchNamespaces []string `json:"watchNamespaces,omitempty"`
+	// Cluster domain name to be used when templating URLs to services.
+	ClusterDomain string `json:"clusterDomain"`
 	// Namespace for cluster wide configuration resources like CLusterFlow and ClusterOutput.
 	// This should be a protected namespace from regular users.
 	// Resources like fluentbit and fluentd will run in this namespace as well.
@@ -134,6 +136,9 @@ const (
 
 // SetDefaults fills empty attributes
 func (l *Logging) SetDefaults() error {
+	if l.Spec.ClusterDomain == "" {
+		l.Spec.ClusterDomain = "cluster.local"
+	}
 	if !l.Spec.FlowConfigCheckDisabled && l.Status.ConfigCheckResults == nil {
 		l.Status.ConfigCheckResults = make(map[string]bool)
 	}
