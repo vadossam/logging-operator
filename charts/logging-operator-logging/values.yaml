@@ -12,6 +12,8 @@ flowConfigOverride:	""
 nameOverride: ""
 fullnameOverride: ""
 
+clusterDomain: "cluster.local"
+
 # If an immutable field is changed, delete the existing resource
 # and recreate it with the new configuration.
 enableRecreateWorkloadOnImmutableFieldChange: false
