@@ -12,7 +12,6 @@ flowConfigOverride:	""
 nameOverride: ""
 fullnameOverride: ""
 
-clusterDomain: "cluster.local"
 
 # If an immutable field is changed, delete the existing resource
 # and recreate it with the new configuration.
@@ -68,6 +67,9 @@ tls:
 
 # Limit namespaces from where to read Flow and Output specs
 watchNamespaces: []
+
+# Cluster domain name
+clusterDomain: "cluster.local"
 # Control namespace that contains ClusterOutput and ClusterFlow resources
 controlNamespace: ""
 # Allow configuration of cluster resources from any namespace
